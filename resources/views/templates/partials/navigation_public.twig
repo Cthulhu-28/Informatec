@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand navbar-light navbar-tec sticky-top">
+    <a class="navbar-brand" href="{{ path_for('home') }}">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        {% if auth.check %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">{{ auth.user.name}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path_for('auth.password.change') }}">Change password</a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path_for('auth.signout') }}">Sign out</a>
+            </li>
+
+        </ul>
+
+        {% else %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path_for('auth.signup') }}">Lista de carreras</a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path_for('auth.signin') }}">Contacto</a>
+
+            </li>
+        </ul>
+
+        {% endif %}
+
+
+    </div>
+</nav>

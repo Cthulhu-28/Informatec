@@ -1,0 +1,17 @@
+{% extends "templates/app.twig" %} {% block content %}
+<div class="svg-container" id="svg-container"></div>
+{% endblock %} {% block scripts %}
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="{{ base_url() }}/scripts/map-select.js"></script>
+<script>
+    var svg = undefined;
+    $(document).ready(function() {
+        d3.xml('{{ base_url() }}/img/map.svg').then(data => {
+            document.getElementById('svg-container').append(data.documentElement)
+            initEditor();
+            newMarker();
+        })
+    });
+</script>
+
+{% endblock %}
