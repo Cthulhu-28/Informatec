@@ -1,6 +1,6 @@
 <?php
 
-namespace Informatec\Auth;
+namespace Informatec\Data\Auth;
 
 use Informatec\Models\User;
 

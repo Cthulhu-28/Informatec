@@ -1,0 +1,36 @@
+{% extends "templates/app.twig" %} {% block content %}
+<div class="flex-grow-1 d-flex align-items-start">
+    <div class="container-fluid mt-md-5 mt-sm-5">
+        <h4>Lista de carreras</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>&nbsp;</th>
+                </thead>
+                <tbody>
+                    {% for major in majors %}
+                    <tr>
+                        <td>{{major.id}}</td>
+                        <td>{{major.name}}</td>
+                        <td>
+                            {% if major.status == 1 %}Activo {% else %} Inactivo {% endif %}
+                        </td>
+                        <td>
+                            <a class="btn informatec-see-btn" href={{ path_for( 'admin.majors.edit', { 'id':major.id} ) }} role="button">Ver</a>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %} {% block scripts %}
+<script src="https://kit.fontawesome.com/38f5461475.js" crossorigin="anonymous"></script>
+
+{% endblock %}

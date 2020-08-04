@@ -18,6 +18,10 @@ body {
     }
 }
 
+.img-home img {
+    transition: transform 1s ease;
+}
+
 @media (orientation: landscape) {
     .img-home {
         min-height: 80vh;
@@ -42,6 +46,7 @@ body {
         position: absolute;
         bottom: 0;
         left: 0;
+        overflow: hidden;
     }
     .picture {
         height: 100%;
@@ -99,7 +104,8 @@ p {
     color: #fff !important;
 }
 
-.svg-container {
+
+/* .svg-container {
     margin: 0 auto;
     min-height: 90vh;
     max-height: 90vh;
@@ -111,7 +117,7 @@ p {
     min-height: 90vh;
     max-height: 90vh;
     width: auto;
-}
+} */
 
 .svg-small {
     min-height: 51vh !important;
@@ -123,13 +129,40 @@ p {
     max-height: 50vh !important;
 }
 
+.svg-small {
+    /* width: auto;
+    max-width: 80% !important; */
+    display: inline-block;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+    max-height: 51vh;
+    width: 100% !important;
+    vertical-align: center;
+    background-color: #3a3a3a;
+    position: relative;
+}
+
+.svg-small .svg-map {
+    transition: transform .3s ease;
+    height: 51vh;
+    width: auto;
+    margin: 0 auto !important;
+    /* transform-origin: 78% 86%; */
+    /* transform-origin: 20% 30%; */
+    /* -webkit-transform-origin: 90% 90%;
+    -ms-transform-origin: 90% 90%;
+    -o-transform-origin: 90% 90%;
+    -moz-transform-origin: 90% 90%; */
+}
+
 .svg-border {
     border: #133b4f solid 2px;
 }
 
 .dot {
-    fill: lightblue;
-    stroke: #999999;
+    fill: red;
+    stroke: red;
 }
 
 .form-group textarea {
@@ -138,4 +171,90 @@ p {
 
 .form-group label {
     font-weight: 700;
+}
+
+.informatec-see-btn {
+    background-color: #00a4d6 !important;
+    outline: none;
+    box-shadow: none;
+    text-align: center;
+    font-weight: 700;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 700 !important;
+}
+
+.informatec-see-btn:hover,
+.informatec-see-btn:active,
+.informatec-see-btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: #0085ad !important;
+    color: #fff !important;
+}
+
+.svg-zoom {
+    /* width: auto;
+    max-width: 80% !important; */
+    display: inline-block;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+    max-height: 60vh;
+    vertical-align: center;
+    background-color: #3a3a3a;
+    position: relative;
+}
+
+.svg-zoom .picture-map {
+    transition: transform .3s ease;
+    height: 60vh;
+    width: auto;
+    margin: 0 auto !important;
+    /* transform-origin: 78% 86%; */
+    /* transform-origin: 20% 30%; */
+    /* -webkit-transform-origin: 90% 90%;
+    -ms-transform-origin: 90% 90%;
+    -o-transform-origin: 90% 90%;
+    -moz-transform-origin: 90% 90%; */
+}
+
+.svg-zoom:hover .picture-map {
+    /* transform: scale(3) translate(-9.33%, -11.66%); */
+    /* transform: translate(30%, 20%) scale(3); */
+    /* -webkit-transform: scale(3) translate(0%, 0%);
+    -ms-transform: scale(3) translate(0%, 0%);
+    -o-transform: scale(3) translate(0%, 0%);
+    -moz-transform: translate(-40% -40%) scale(3) translate(0%, 0%); */
+}
+
+.map-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+}
+
+.map-marker-2 {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+}
+
+.simple-textarea {
+    resize: none !important;
+    overflow: hidden;
+    /* white-space: pre-wrap !important;
+    word-wrap: break-word !important; */
+}
+
+.growable-textarea {
+    /* overflow: hidden;
+    text-rendering: optimizeSpeed;
+    vertical-align: top; */
 }

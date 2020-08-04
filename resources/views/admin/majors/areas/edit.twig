@@ -1,0 +1,73 @@
+{% extends "templates/app.twig" %} {% block content %}
+<form action="{{ path_for('admin.majors.areas.edit', { 'id':major.id, 'area': area.id}) }}" method="post">
+
+    <h3>Nueva área para {{major.name}}
+    </h3>
+
+    <div class="form-group">
+        <label for="area_name">Nombre del área</label>
+        <input id="area_name" name="area_name[]" class="form-control" placeholder="Nombre del área" required value="{{area.area}}">
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h4>Tareas ocupaciones</h4>
+            <div id="tasks">
+                {% for task in area.tasks %}
+                <div class="row m-3">
+                    <div class="col-auto pr-3">A</div>
+                    <div class="col p-0">
+                        <textarea class="task-text form-control simple-textarea growable-textarea" rows="1" name="task[]">{{task}}</textarea>
+                    </div>
+
+                    <div class="col-auto pl-3">
+                        <button onclick="deleteTask(this)" type="button">CLICK</button>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+            <div class="row m-3">
+                <div class="col-auto pr-3">
+                    <button onclick="newTask()" type="button">Nueva</button>
+                </div>
+                <div class="col-auto p-0">
+                    Nueva tarea
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <h4>Areas afines</h4>
+            <div id="areas">
+                {% for subarea in area.subareas %}
+                <div class="row m-3">
+                    <div class="col-auto pr-3">A</div>
+                    <div class="col p-0">
+                        <textarea class="area-text form-control simple-textarea growable-textarea" rows="1" name="area[]">{{subarea}}</textarea>
+                    </div>
+
+                    <div class="col-auto pl-3">
+                        <button onclick="deleteArea(this)" type="button">CLICK</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row m-3">
+                <div class="col-auto pr-3">
+                    <button onclick="newArea()" type="button">Nuevo</button>
+                </div>
+                <div class="col-auto p-0">
+                    Nuevao área afín
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{ csrf.field | raw }}
+
+    <button type="submit">DELE</button>
+</form>
+{% endblock %} {% block scripts %}
+<script src="{{ base_url() }}/scripts/admin/majors/area.js"></script>
+{% endblock %}

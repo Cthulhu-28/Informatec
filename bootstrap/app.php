@@ -37,7 +37,11 @@ $container['db'] = function ($container) use ($capsule) {
 };
 
 $container['auth'] = function ($container) {
-    return new \Informatec\Auth\Auth;
+    return new \Informatec\Data\Auth\Auth;
+};
+
+$container['major'] = function ($container) {
+    return new \Informatec\Data\Major\Major;
 };
 
 $container['flash'] = function ($container) {
@@ -95,7 +99,7 @@ $app->add(new \Informatec\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new \Informatec\Middleware\OldInputMiddleware($container));
 $app->add(new \Informatec\Middleware\CsrfViewMiddleware($container));
 
-$app->add($container->csrf);
+// $app->add($container->csrf);
 
 v::with('Informatec\\Validation\\Rules\\');
 

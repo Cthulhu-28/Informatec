@@ -4,36 +4,42 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="major_id">Código de carrera</label>
-                <input id="major_id" name="major_id" class="form-control" placeholder="Código">
+                <input id="major_id" name="major_id" class="form-control" placeholder="Código" maxlength="3" required>
             </div>
             <div class="form-group">
                 <label for="major_name">Nombre de la carrera</label>
-                <input id="major_name" name="major_name" class="form-control" placeholder="Ej: Administración de Empresas">
+                <input id="major_name" name="major_name" class="form-control" placeholder="Ej: Administración de Empresas" required>
             </div>
             <div class="form-group">
                 <label for="major_profile">Perfil vocacional</label>
-                <textarea id="major_profile" name="major_profile" class="form-control" rows="5"></textarea>
+                <textarea id="major_profile" name="major_profile" class="form-control" rows="5" required></textarea>
             </div>
-
+            <div class="form-group">
+                <label for="major_color">Color</label>
+                <input id="major_color" name="major_color" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="major_video">Video</label>
+                <input type="url" id="major_video" name="major_video" class="form-control" placeholder="Ej: google.com">
+            </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label for="major_building">Edificio</label>
-                <input id="major_building" name="major_building" class="form-control" placeholder="Ej: C3">
+                <input id="major_building" name="major_building" class="form-control" placeholder="Ej: C3" required>
             </div>
             <div class="form-group">
                 <label for="major_google">Link Google Maps</label>
-                <input type="url" id="major_google" name="major_google" class="form-control" placeholder="Ej: C3">
+                <input type="url" id="major_google" name="major_google" class="form-control" placeholder="Ej: google.com">
             </div>
             {{ csrf.field | raw }}
             <div class="svg-container svg-border svg-small" id="svg-container"></div>
-            <input type="hidden" name="x_value" id="x_value" value="0">
-            <input type="hidden" name="y_value" id="y_value" value="0">
-
+            <input type="hidden" name="x_value" id="x_value" value="0" required>
+            <input type="hidden" name="y_value" id="y_value" value="0" required>
+            <input type="submit" class="btn" value="Submit">
         </div>
     </div>
 </form>
-
 {% endblock %} {% block scripts %}
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="{{ base_url() }}/scripts/map-select.js"></script>
@@ -47,5 +53,4 @@
         })
     });
 </script>
-
 {% endblock %}

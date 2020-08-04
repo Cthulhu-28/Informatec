@@ -1,17 +1,88 @@
 {% extends "templates/app.twig" %} {% block content %}
-<div class="svg-container" id="svg-container"></div>
-{% endblock %} {% block scripts %}
-<script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="{{ base_url() }}/scripts/map-select.js"></script>
-<script>
-    var svg = undefined;
-    $(document).ready(function() {
-        d3.xml('{{ base_url() }}/img/map.svg').then(data => {
-            document.getElementById('svg-container').append(data.documentElement)
-            initEditor();
-            newMarker();
-        })
-    });
-</script>
+<div class="row">
+    <div class="col-md-5 justify-content-center align-self-center">
+        <div class="form-group">
+            <label for="major-select">Seleccione una carrera</label>
+            <select class="form-control" id="major-select">
+					<option value="NON">Seleccione una carrera</option>
+					{% for major in majors %}
+						<option value="{{major.id}}">{{major.name}}</option>
+					{% endfor %}
+				</select>
+        </div>
+    </div>
 
+    <div class="col-md-7 align-self-center">
+
+        <div style="text-align: center;">
+            <div class="svg-zoom">
+                <img id="map" class="picture-map" src="/public/img/map.svg" alt="Mapa del Tecnológico de Costa Rica">
+                <div class="map-marker"></div>
+
+            </div>
+        </div>
+        {% for major in majors %}
+        <div id="major_{{major.id}}" class="w-100" style="text-align: center; display: none;">
+
+            <p>
+                <strong>{{major.name}}</strong>
+            </p>
+            <p>
+
+                {{major.building}}
+            </p>
+
+            <p>
+
+                <a href="{{major.link}}">Link Google Maps</a>
+            </p>
+
+            <a class="btn informatec-see-btn" href={{ path_for( 'majors.show', { 'id': major.id} ) }} role="button">Ver más</a>
+
+
+            <input id="x_{{major.id}}" value="{{major.x}}" type="hidden">
+            <input id="y_{{major.id}}" value="{{major.y}}" type="hidden">
+
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} {% block scripts %}
+<script>
+    var lastID = "";
+    $(window).ready(() => {
+
+        var lastID = $('#major-select').val();
+        show(lastID);
+
+        $('#major-select').on('change', () => {
+            var v = $('#major-select').val();
+            show(v);
+        });
+    });
+
+    function show(ID) {
+        setTimeout(() => {
+            document.getElementById("map").style.transform = ``;
+            if (lastID) {
+                $(`#major_${lastID}`).hide();
+            }
+            if (ID != 'NON') {
+                $(`#major_${ID}`).show();
+                var w = 962.9;
+                var h = 1041.8;
+                var x = $(`#x_${ID}`).val();
+                var y = $(`#y_${ID}`).val();
+                var pX = (x / w) * 100;
+                var pY = (y / h) * 100;
+                var tX = 50 - pX;
+                var tY = 50 - pY;
+                document.getElementById("map").style['transform-origin'] = `${tX}% ${tY}%)`;
+                document.getElementById("map").style.transform = `scale(3) translate(${tX}%, ${tY}%)`;
+                lastID = ID;
+            }
+        }, 500);
+    }
+</script>
 {% endblock %}
