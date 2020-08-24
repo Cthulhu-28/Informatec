@@ -1,101 +1,141 @@
 {% extends "templates/app.twig" %} {% block content %}
-<nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="true">Información general</a>
-        <a class="nav-item nav-link" id="nav-skills-tab" data-toggle="tab" href="#nav-skills" role="tab" aria-controls="nav-skills" aria-selected="false">Habilidades</a>
-        <a class="nav-item nav-link" id="nav-areas-tab" data-toggle="tab" href="#nav-areas" role="tab" aria-controls="nav-areas" aria-selected="false">Áreas</a>
-    </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
-        <div class="row ml-0">
-            <h4>Perfil vocacional</h4>
+<div class="flex-grow-1 d-flex align-items-start">
+    <div class="container-fluid h-100">
+        <div class="row mr-3 ml-3">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <h3> <span style="margin-right: 8px;"><img height="33" src="/public/icons/{{major.id}}.png" alt="Ícono de la carrera {{major.name}}"></span>{{major.name}}</h3>
+                <div class="mt-4"></div>
+                <div class="row">
+                    <div class="col-12">
+                        <h5>Descripción de la carrera</h5>
+                        <p>{{major.description}}</p>
 
-        </div>
-        <div class="row ml-0">
-            <p>{{major.description}}</p>
-        </div>
-        <div id="video-container" class="row ml-0">
-            <iframe id="player" type="text/html" width="640" height="390" src="{{major.video}}" frameborder="0"></iframe>
-        </div>
-        <input type="url" id="major_video" name="major_video" class="form-control" placeholder="Ej: google.com" value="{{major.video}}" hidden>
-    </div>
-    <div class="tab-pane fade" id="nav-skills" role="tabpanel" aria-labelledby="nav-skills-tab">
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <h4>Habilidades</h4>
-                <div id="skills">
-                    {% for skill in skills %}
-                    <div class="row m-3">
-                        <div class="col-auto pr-3">A</div>
-                        <div class="col p-0">
-                            <p>{{skill.skill}}</p>
-                        </div>
                     </div>
-                    {% endfor %}
-                </div>
 
-            </div>
-            <div class="col-md-6">
-                <h4>Intereses</h4>
-                <div id="interests">
-                    {% for interest in interests %}
-                    <div class="row m-3">
-                        <div class="col-auto pr-3">A</div>
-                        <div class="col p-0">
-                            <p>{{interest.interest}}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="tab-pane fade" id="nav-areas" role="tabpanel" aria-labelledby="nav-areas-tab">
-        <div class="row mt-4">
-            <ul>
-                {% for area in areas %}
-                <li>
-                    {{area.area}}
-                    <ul></ul>
-                </li>
-                <ul>
-                    <li>
-                        Tareas relacionadas
-                        <ul>
-                            {% for task in area.tasks %}
-                            <li>{{task}}</li>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <h5>Habilidades</h5>
+                        <ul class="major-ul">
+                            {% for skill in skills %}
+                            <li>{{skill.skill}}</li>
                             {% endfor %}
                         </ul>
-                    </li>
-                    <li>
-                        Áreas afines
-                        <ul>
-                            {% for subarea in area.subareas %}
-                            <li>{{subarea}}</li>
-                            {% endfor %}
-                        </ul>
-                    </li>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <h5>Intereses</h5>
+                        <ul class="major-ul">
+                            {% for interest in interests %}
 
-                </ul>
-                {% endfor %}
-            </ul>
+                            <li>{{interest.interest}}</li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-auto col-lg-auto col-xl-auto" style="text-align: center;">
+                <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block" style="margin-top: 54px"></div>
+                <h5 class="mt-3">Plan de estudios</h5>
+                <a role="button" href="/public/planes/{{major.id}}.pdf" download aria-label="Descargar plan de estudios" aria-describedby="Descargar plan de estudis">
+
+                    <div><img src="/public/img/plan.svg" width="64" height="64" alt="Ícono de plan de estudios. Descargar plan de estudios">
+                        <br/> Ver plan de estudios
+                    </div>
+                </a>
+
+            </div>
+            <div class="col-md col-lg col-xl d-none d-sm-none d-md-block d-lg-block d-xl-block" style="text-align: center;">
+                <div style="margin-top: 54px"></div>
+                <!-- MAPA -->
+                <div class="square">
+                    <img id="map" class="picture-map" src="/public/img/map.svg" alt="Mapa del Tecnológico de Costa Rica">
+                    <img class="map-marker" src="/public/img/marker.svg">
+                </div>
+                <div id="major_{{major.id}}" class="w-100" style="text-align: center;">
+
+                    <div>
+                        <strong style="color: #3a3a3a;">{{major.name}}</strong></div>
+                    <div>
+                        {{major.location.building}}
+                    </div>
+                    <div>
+                        <a role="link" href="{{major.location.link}}"><i>Link Google Maps</i></a>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-12 col-sm col-md col-lg col-xl d-block d-sm-block d-md-none d-lg-none d-xl-none" style="text-align: center">
+                <div class="mt-5"></div>
+                <div class="square">
+                    <img id="map" class="picture-map" src="/public/img/map.svg" alt="Mapa del Tecnológico de Costa Rica">
+                    <img class="map-marker" src="/public/img/marker.svg">
+                </div>
+                <div id="major_{{major.id}}" class="w-100" style="text-align: center;">
+
+                    <div>
+                        <strong style="color: #3a3a3a;">{{major.name}}</strong>
+                    </div>
+                    <div>
+                        {{major.location.building}}
+                    </div>
+                    <div>
+                        <a role="link" href="{{major.location.link}}">
+                            <i>Link Google Maps</i>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+            <input id="x" value="{{major.location.x}}" type="hidden">
+            <input id="y" value="{{major.location.y}}" type="hidden">
+
         </div>
+        <div class="w-100">
+            <div class="ml-auto img-bottom-left">
+                <img class="picture" src="/public/img/bottom-left.svg" alt="">
+            </div>
+        </div>
+
     </div>
+
+
 </div>
-
 {% endblock %} {% block scripts %}
 <script>
+    document.getElementById('nav_list').classList.add("active");
+
     function getId(url) {
         const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
         const match = url.match(regExp);
 
         return (match && match[2].length === 11) ? match[2] : null;
     }
+    show();
+
     $(window).ready(() => {
         const videoId = getId('{{ major.video }}');
         const iframeMarkup = '<iframe width="560" height="315" src="//www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>';
         $('#video-container').html(iframeMarkup);
     })
+
+    function show() {
+
+        // $(`#major_${ID}`).show();
+        var w = 962.9;
+        var h = 1041.8;
+        var x = $(`#x`).val();
+        var y = $(`#y`).val();
+        var pX = (x / w) * 100;
+        var pY = (y / h) * 100;
+        var tX = 50 - pX;
+        var tY = 50 - pY;
+        var maps = document.querySelectorAll('#map');
+        maps.forEach(map => {
+            map.style['transform-origin'] = `${tX}% ${tY}%)`;
+            map.style.transform = `scale(6) translate(${tX}%, ${tY}%)`;
+        });
+    }
 </script>
 {% endblock %}

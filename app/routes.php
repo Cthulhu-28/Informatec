@@ -4,6 +4,7 @@ use Informatec\Middleware\AuthMiddleware;
 use Informatec\Middleware\GuestMiddleware;
 
 $app->get('/', \Informatec\Controllers\HomeController::class . ':index')->setName('home');
+$app->get('/contact', \Informatec\Controllers\HomeController::class . ':contact')->setName('contact');
 $app->get('/majors/map', \Informatec\Controllers\Majors\MajorController::class . ':getMajorsList')->setName('majors.list');
 $app->get('/majors/show/{id}', \Informatec\Controllers\Majors\MajorController::class . ':getMajor')->setName('majors.show');
 $app->get('/majors/test/{id}', \Informatec\Controllers\Majors\MajorController::class . ':testMajor')->setName('majors.test');

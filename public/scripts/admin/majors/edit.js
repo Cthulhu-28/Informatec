@@ -92,7 +92,8 @@ function deleteInterest(node, id) {
     parent.removeChild(deletedNode);
 }
 
-function saveSkills() {
+function saveSkills(id) {
+    id = id.trim();
     var newSkills = [];
     var oldSkills = [];
 
@@ -129,7 +130,7 @@ function saveSkills() {
         oldInterests: oldInterests,
         deletedInterests: deletedInterests
     };
-    var jqxhr = $.post("/public/admin/majors/edit/IC", data, function() {
+    var jqxhr = $.post(`/public/admin/majors/edit/${id}`, data, function() {
             // alert("success");
         })
         .done(function(data) {

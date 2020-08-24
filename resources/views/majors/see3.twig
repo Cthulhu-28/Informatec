@@ -1,0 +1,101 @@
+{% extends "templates/app.twig" %} {% block content %}
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="true">Información general</a>
+        <a class="nav-item nav-link" id="nav-skills-tab" data-toggle="tab" href="#nav-skills" role="tab" aria-controls="nav-skills" aria-selected="false">Habilidades</a>
+        <a class="nav-item nav-link" id="nav-areas-tab" data-toggle="tab" href="#nav-areas" role="tab" aria-controls="nav-areas" aria-selected="false">Áreas</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+        <div class="row ml-0">
+            <h4>Perfil vocacional</h4>
+
+        </div>
+        <div class="row ml-0">
+            <p>{{major.description}}</p>
+        </div>
+        <div id="video-container" class="row ml-0">
+            <iframe id="player" type="text/html" width="640" height="390" src="{{major.video}}" frameborder="0"></iframe>
+        </div>
+        <input type="url" id="major_video" name="major_video" class="form-control" placeholder="Ej: google.com" value="{{major.video}}" hidden>
+    </div>
+    <div class="tab-pane fade" id="nav-skills" role="tabpanel" aria-labelledby="nav-skills-tab">
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h4>Habilidades</h4>
+                <div id="skills">
+                    {% for skill in skills %}
+                    <div class="row m-3">
+                        <div class="col-auto pr-3">A</div>
+                        <div class="col p-0">
+                            <p>{{skill.skill}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <h4>Intereses</h4>
+                <div id="interests">
+                    {% for interest in interests %}
+                    <div class="row m-3">
+                        <div class="col-auto pr-3">A</div>
+                        <div class="col p-0">
+                            <p>{{interest.interest}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="nav-areas" role="tabpanel" aria-labelledby="nav-areas-tab">
+        <div class="row mt-4">
+            <ul>
+                {% for area in areas %}
+                <li>
+                    {{area.area}}
+                    <ul></ul>
+                </li>
+                <ul>
+                    <li>
+                        Tareas relacionadas
+                        <ul>
+                            {% for task in area.tasks %}
+                            <li>{{task}}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        Áreas afines
+                        <ul>
+                            {% for subarea in area.subareas %}
+                            <li>{{subarea}}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                </ul>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %} {% block scripts %}
+<script>
+    function getId(url) {
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+
+        return (match && match[2].length === 11) ? match[2] : null;
+    }
+    $(window).ready(() => {
+        const videoId = getId('{{ major.video }}');
+        const iframeMarkup = '<iframe width="560" height="315" src="//www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>';
+        $('#video-container').html(iframeMarkup);
+    })
+</script>
+{% endblock %}

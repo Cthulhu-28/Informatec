@@ -33,6 +33,7 @@ class MajorController extends Controller
             'majors/see.twig',
             [
                 'major' => $major,
+                'location' => $major->location,
                 'skills' => $skills,
                 'interests' => $interests,
                 'areas' => $areas

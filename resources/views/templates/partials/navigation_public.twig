@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand navbar-light navbar-tec sticky-top">
-    <a class="navbar-brand" href="{{ path_for('home') }}">Informatec</a>
+<nav class="navbar navbar-expand navbar-light navbar-tec sticky-top mr-2 ml-2">
+    <a class="navbar-brand" href="{{ path_for('home') }}"><img src="/public/img/logo_tec.png" height="16"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -21,13 +21,12 @@
 
         {% else %}
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item" id="nav_list">
                 <a class="nav-link" href="{{ path_for('majors.list') }}">Lista de carreras</a>
 
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path_for('auth.signin') }}">Contacto</a>
-
+            <li class="nav-item" id="nav_contact">
+                <a class="nav-link" href="{{ path_for('contact') }}">Contacto</a>
             </li>
         </ul>
 

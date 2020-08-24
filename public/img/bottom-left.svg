@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg8337"
+   version="1.1"
+   viewBox="0 0 414.1618 120.46655"
+   height="120.46655mm"
+   width="414.1618mm">
+  <defs
+     id="defs8331">
+    <clipPath
+       id="clipPath18"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path16"
+         d="M 0,1080 H 1920 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath26"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path24"
+         d="M 745.996,341.48 H 1920 V -2.99985 H 745.996 Z" />
+    </clipPath>
+  </defs>
+  <metadata
+     id="metadata8334">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-1924.7048,-98.427437)"
+     id="layer1">
+    <g
+       transform="matrix(0.35277777,0,0,-0.35277777,1661.534,218.89399)"
+       id="g12">
+      <g
+         clip-path="url(#clipPath18)"
+         id="g14">
+        <g
+           id="g20">
+          <g
+             id="g22" />
+          <g
+             id="g34">
+            <g
+               style="opacity:0.14999402"
+               id="g32"
+               clip-path="url(#clipPath26)">
+              <g
+                 id="g30"
+                 transform="translate(1919.998,286.5244)">
+                <path
+                   id="path28"
+                   style="fill:#00a4d6;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                   d="m 0,0 c 0,0 -74.231,75.548 -187.84,49.487 -170.84,-39.189 -124.369,-169.899 -250.357,-196.642 -125.989,-26.743 -485.58,29.889 -607.82,0 -122.239,-29.89 -127.985,-142.369 -127.985,-142.369 H -0.004 Z" />
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

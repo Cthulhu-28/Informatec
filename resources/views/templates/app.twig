@@ -12,9 +12,11 @@
 </head>
 
 <body>
-    <div class="container d-flex flex-column h-100">
-
-        {% include "templates/partials/navigation_public.twig" %} {% include "templates/partials/flash.twig" %} {% block content %}{% endblock %}
+    <div class="d-flex flex-column h-100">
+        {% include "templates/partials/navigation_public.twig" %} {% include "templates/partials/flash.twig" %}
+        <div class="container2 ">
+            <div class="mb-3"></div>{% block content %}{% endblock %}
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
