@@ -15,10 +15,10 @@ $app = new \Slim\App([
         'displayErrorDetails' => true,
         "db" => [
             'driver' => 'mysql',
-            'host' => 'us-cdbr-east-06.cleardb.net',
-            'username' => 'b4e1b8c20cd5e4',
-            'password' => '27fa3cfa',
-            'database' => 'heroku_cad5d849da1e2ca',
+            'host' => '',
+            'username' => '',
+            'password' => '',
+            'database' => '',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
         ]
